@@ -10,7 +10,6 @@ import UIKit
 
 extension UIApplication {
     
-    @available(iOS 13, *)
     public var mainWindow: UIWindow? {
         let window = UIApplication.shared
             .connectedScenes

@@ -9,7 +9,6 @@ import UIKit
 
 extension EnvironmentManager {
     
-    @available(iOS 13, *)
     public func showEnvironmentConfiguration() {
         let alert = UIAlertController(title: "Environments", message: "You can switch environment below", preferredStyle: .actionSheet)
         allEnvironments.forEach { env in
