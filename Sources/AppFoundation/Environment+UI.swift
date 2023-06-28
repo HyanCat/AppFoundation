@@ -7,11 +7,11 @@
 
 import UIKit
 
-extension EnvironmentManager {
+extension EnvManager {
     
     public func showEnvironmentConfiguration() {
         let alert = UIAlertController(title: "Environments", message: "You can switch environment below", preferredStyle: .actionSheet)
-        allEnvironments.forEach { env in
+        allEnvs.forEach { env in
             let action = UIAlertAction(title: env.description.capitalized, style: .default) { _ in
                 self.switchTo(env: env, reboot: true)
             }

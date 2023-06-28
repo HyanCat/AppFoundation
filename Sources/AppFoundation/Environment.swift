@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum Environment: UInt8 {
+public enum Env: UInt8 {
     case production
     case development
     case test
 }
 
-extension Environment: CustomStringConvertible {
+extension Env: CustomStringConvertible {
     public var description: String {
         switch self {
         case .production:
@@ -27,23 +27,23 @@ extension Environment: CustomStringConvertible {
     }
 }
 
-public class EnvironmentManager {
+public class EnvManager {
     
-    public static let shared = EnvironmentManager()
+    public static let shared = EnvManager()
     
-    var current: Environment
+    var currentEnv: Env
     
-    var allEnvironments: [Environment] = [.development, .test, .production]
+    var allEnvs: [Env] = [.development, .test, .production]
     
     init() {
-        let value = UserDefaults.standard.integer(forKey: "Environment")
+        let value = UserDefaults.standard.integer(forKey: "Env")
         // default should be production(0)
-        self.current = Environment(rawValue: UInt8(value)) ?? .production
+        currentEnv = Env(rawValue: UInt8(value)) ?? .production
     }
     
-    public func switchTo(env: Environment, reboot: Bool = false) {
-        current = env
-        UserDefaults.standard.set(env.rawValue, forKey: "Environment")
+    public func switchTo(env: Env, reboot: Bool = false) {
+        currentEnv = env
+        UserDefaults.standard.set(env.rawValue, forKey: "Env")
         if (reboot) {
             self.reboot()
         }
@@ -57,7 +57,7 @@ public class EnvironmentManager {
 }
 
 @propertyWrapper
-public struct EnvironmentDefine<Value> {
+public struct EnvDefine<Value> {
     
     public var productionValue: Value
     public var developmentValue: Value?
@@ -65,7 +65,7 @@ public struct EnvironmentDefine<Value> {
     
     public var wrappedValue: Value {
         get {
-            switch EnvironmentManager.shared.current {
+            switch EnvManager.shared.currentEnv {
             case .production:
                 return productionValue
             case .development:
