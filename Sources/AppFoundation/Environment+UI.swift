@@ -5,6 +5,7 @@
 //  Copyright © 2023 hyancat. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension EnvManager {
@@ -25,3 +26,5 @@ extension EnvManager {
     }
     
 }
+
+#endif

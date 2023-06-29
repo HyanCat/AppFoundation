@@ -6,6 +6,7 @@
 //  Copyright © 2023 hyancat. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIApplication {
@@ -20,3 +21,5 @@ extension UIApplication {
     }
     
 }
+
+#endif
