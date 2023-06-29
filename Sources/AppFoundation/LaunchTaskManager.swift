@@ -22,7 +22,7 @@ public protocol LaunchTask: AnyObject {
     
     var status: LaunchTaskStatus { get set }
     
-    func execute(launchOptions: [LaunchOptionsKey: Any]?) async -> Bool
+    func onLaunch(options: [LaunchOptionsKey: Any]?) async -> Bool
     
 }
 
@@ -68,7 +68,7 @@ public class LaunchTaskManager {
     
     func execute(task: LaunchTask, options: [LaunchOptionsKey: Any]? = nil) async -> Bool {
         task.status = .executing
-        let suc = await task.execute(launchOptions: options)
+        let suc = await task.onLaunch(options: options)
         if suc {
             task.status = .succeed
         } else {
