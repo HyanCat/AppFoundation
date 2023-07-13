@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+#if os(iOS)
+
 public struct PresentableContentView<Content: View>: View {
     
     public let content: () -> Content
@@ -85,3 +87,5 @@ struct PresentableContentWrappedView14<Content: View>: View {
         }
     }
 }
+
+#endif

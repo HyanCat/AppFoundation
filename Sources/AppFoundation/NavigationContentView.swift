@@ -33,6 +33,7 @@ public class DismissActor {
     }
 }
 
+#if os(iOS)
 
 public struct NavigationContentView<Content: View>: View {
     
@@ -130,3 +131,5 @@ struct NavigationContentWrappedView14<Content: View>: View {
         .navigationViewStyle(.stack)
     }
 }
+
+#endif
