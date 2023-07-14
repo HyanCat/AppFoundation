@@ -8,14 +8,15 @@
 
 import SwiftUI
 
-#if os(iOS)
+#if os(iOS) || os(macOS)
 
+@available(iOS 13, macOS 11, *)
 public struct PresentableContentView<Content: View>: View {
     
     public let content: () -> Content
     
     public var body: some View {
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, macOS 13.0, *) {
             PresentableContentWrappedView() {
                 content()
             }
@@ -31,7 +32,7 @@ public struct PresentableContentView<Content: View>: View {
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 15.0, macOS 13.0, *)
 struct PresentableContentWrappedView<Content: View>: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -54,12 +55,16 @@ struct PresentableContentWrappedView<Content: View>: View {
                 .foregroundColor(colorScheme == .light ? .black : Color(.lightGray))
                 .frame(width: 44, height: 44)
                 .position(x: proxy.size.width - 22 - 8, y: 22 + 8)
+#if os(macOS)
+                .buttonStyle(.plain)
+#endif
             }
         }
         .interactiveDismissDisabled()
     }
 }
 
+@available(iOS 13, macOS 11, *)
 struct PresentableContentWrappedView14<Content: View>: View {
     
     @Environment(\.presentationMode) var presentationMode
