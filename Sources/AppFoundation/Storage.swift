@@ -26,7 +26,7 @@ public class Storage {
             print("Document Directory URL: \(documentDirectoryURL)")
             
             let lmdbURL: URL
-            if #available(iOS 16.0, *) {
+            if #available(iOS 16.0, macOS 13.0, *) {
                 lmdbURL = documentDirectoryURL.appending(component: "lmdb")
             } else {
                 var mutableURL = documentDirectoryURL
