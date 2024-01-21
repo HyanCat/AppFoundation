@@ -3,9 +3,10 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-public struct LaunchTaskMacros: ConformanceMacro {
-    public static func expansion(of node: AttributeSyntax, providingConformancesOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [(TypeSyntax, GenericWhereClauseSyntax?)] {
-        return [ ("LaunchTask", nil) ]
+public struct LaunchTaskMacros: ExtensionMacro {
+    public static func expansion(of node: SwiftSyntax.AttributeSyntax, attachedTo declaration: some SwiftSyntax.DeclGroupSyntax, providingExtensionsOf type: some SwiftSyntax.TypeSyntaxProtocol, conformingTo protocols: [SwiftSyntax.TypeSyntax], in context: some SwiftSyntaxMacros.MacroExpansionContext) throws -> [SwiftSyntax.ExtensionDeclSyntax] {
+        let launchTaskExtension = try ExtensionDeclSyntax("extension \(type.trimmed): LaunchTask {}")
+        return [launchTaskExtension]
     }
 }
 

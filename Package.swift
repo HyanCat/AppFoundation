@@ -22,10 +22,8 @@ let package = Package(
             targets: ["LaunchTask"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0-swift-5.9-DEVELOPMENT-SNAPSHOT-2023-04-25-b"),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/agisboye/SwiftLMDB.git", from: "2.1.0")
+        .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
+        .package(url: "https://github.com/agisboye/SwiftLMDB.git", from: "2.1.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -39,7 +37,7 @@ let package = Package(
             ]
         ),
         .target(name: "LaunchTask", dependencies: ["LaunchTaskMacros"]),
-        .executableTarget(name: "LaunchTaskClient", dependencies: ["LaunchTask"]),
+        .executableTarget(name: "LaunchTaskClient", dependencies: ["AppFoundation", "LaunchTask"]),
         .target(
             name: "AppFoundation",
             dependencies: ["SwiftLMDB"]),

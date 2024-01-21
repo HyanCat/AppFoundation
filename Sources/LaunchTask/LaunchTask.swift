@@ -11,6 +11,6 @@
 ///         }
 ///     }
 ///
-@attached(conformance)
+@attached(extension, conformances: LaunchTask)
 @attached(member, names: named(status), named(autoload()))
 public macro Launch() = #externalMacro(module: "LaunchTaskMacros", type: "LaunchTaskMacros")

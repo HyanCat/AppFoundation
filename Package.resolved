@@ -1,12 +1,30 @@
 {
   "pins" : [
     {
+      "identity" : "clmdb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/agisboye/CLMDB.git",
+      "state" : {
+        "revision" : "3b32b6473848c139b506cc39793798a832cfb688",
+        "version" : "0.9.30"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax.git",
       "state" : {
-        "revision" : "f1e9245226002bb134884345d4809b9543da3666",
-        "version" : "509.0.0-swift-DEVELOPMENT-SNAPSHOT-2023-06-17-a"
+        "revision" : "43c802fb7f96e090dde015344a94b5e85779eff1",
+        "version" : "509.1.0"
+      }
+    },
+    {
+      "identity" : "swiftlmdb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/agisboye/SwiftLMDB.git",
+      "state" : {
+        "revision" : "66b35898247b88f7079d2e0b0db0b2f84a76c796",
+        "version" : "2.1.5"
       }
     }
   ],
