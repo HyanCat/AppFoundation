@@ -20,6 +20,9 @@ let package = Package(
         .library(
             name: "LaunchTask",
             targets: ["LaunchTask"]),
+        .library(
+            name: "AppConfig",
+            targets: ["AppConfig"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
@@ -41,6 +44,9 @@ let package = Package(
         .target(
             name: "AppFoundation",
             dependencies: ["SwiftLMDB"]),
+        .target(
+            name: "AppConfig",
+            dependencies: ["AppFoundation"]),
         .testTarget(
             name: "AppFoundationTests",
             dependencies: ["AppFoundation"]),
