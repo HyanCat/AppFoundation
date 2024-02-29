@@ -36,7 +36,11 @@ public class Storage {
             
             try FileManager.default.createDirectory(at: lmdbURL, withIntermediateDirectories: true, attributes: nil)
             
-            let environment = try Environment(path: lmdbURL.path, flags: [], maxDBs: 32)
+            var flags: Environment.Flags = []
+#if os(macOS)
+            flags.insert(.noLock)
+#endif
+            let environment = try Environment(path: lmdbURL.path, flags: flags, maxDBs: 32)
             database = try environment.openDatabase(named: namespace, flags: [.create])
             
         } catch {
