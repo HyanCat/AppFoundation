@@ -8,11 +8,26 @@
 import Foundation
 
 public struct AppInfo: Sendable {
+    
     public static var appName: String {
         guard let name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String else {
             return ""
         }
         return name
+    }
+    
+    public static var localizedAppName: String {
+        guard let infoDictionary = Bundle.main.localizedInfoDictionary else {
+            return ""
+        }
+        
+        if let displayName = infoDictionary["CFBundleDisplayName"] as? String {
+            return displayName
+        } else if let bundleName = infoDictionary["CFBundleName"] as? String {
+            return bundleName
+        } else {
+            return ""
+        }
     }
     
     public static var appVersion: String {
